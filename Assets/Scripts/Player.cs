@@ -6,9 +6,9 @@ public class Player : MonoBehaviour
 {
     float speed = 5.0f;
 
-    public GameObject jelly_prefabs { get; set; }
+    public GameObject pikachu_prefabs { get; set; }
 
-    private GameObject jelly;
+    private GameObject pikachu;
     private GameObject player_camera;
     // Start is called before the first frame update
     void Start()
