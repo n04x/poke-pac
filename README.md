@@ -10,9 +10,8 @@ Multiplayer game inspired from the classic Pac-Man Battle Royale, but in my vers
 `TO DO `    
 
 ## R1) Level Environment    
-the environment is 2.5D style, with 3D assets. The path is one tile thick, the walls are represented by 1x1 cube. There is two warp tunnel at the each end of the map along the x-axis, it will warp the player to the other side. The same applies to our Gengar. The pac-dots on our path is represented as pokeball
+the environment is 2.5D style, with 3D assets. The path is one tile thick, the walls are represented by 1x1 cube. There is two warp tunnel at the each end of the map along the x-axis, it will warp the player to the other side. The same applies to our Gengar. The pac-dots on our path is represented as pokeball from Pokemon universe. There is 4 masterballs on our map at each corner, upon catching the masterball, it will turn Gengar into a different shade of color and allows our pokemon to kill them and send them back to prison. Gengar movement is accomplished by using `NavMesh` component attached to it.    
 
 ## Sources
-Bulbasaur, Charmander, Gengar, Pikachu, and Squirtle https://free3d.com/3d-models/pokemon    
-https://www.models-resource.com/3ds/pokemonxy/
+Bulbasaur, Charmander, Gengar, Pikachu, Squirtle, and Pokeball/Masterball https://www.models-resource.com/3ds/pokemonxy/
 
