@@ -7,13 +7,24 @@ using Photon.Realtime;
 public class Lobby : MonoBehaviourPunCallbacks
 {
     [SerializeField] private byte max_player = 4;
+    [SerializeField] private GameObject control_panel;
+    [SerializeField] private GameObject connection_progress;
+
     void Awake()
     {
         PhotonNetwork.AutomaticallySyncScene = true;    
     }
 
-     public void Connect()
+    private void Start()
     {
+        connection_progress.SetActive(false);
+        control_panel.SetActive(true);
+    }
+    public void Connect()
+    {
+        connection_progress.SetActive(true);
+        control_panel.SetActive(false);
+
         if(PhotonNetwork.IsConnected)
         {
             PhotonNetwork.JoinRandomRoom();
@@ -31,6 +42,9 @@ public class Lobby : MonoBehaviourPunCallbacks
 
     public override void OnDisconnected(DisconnectCause cause)
     {
+        connection_progress.SetActive(false);
+        control_panel.SetActive(true);
+
         Debug.LogWarningFormat("OnDisconnected() was called by PUN with reason {0}", cause);
     }
 
