@@ -9,6 +9,7 @@ public class Lobby : MonoBehaviourPunCallbacks
     [SerializeField] private byte max_player = 4;
     [SerializeField] private GameObject control_panel;
     [SerializeField] private GameObject connection_progress;
+    bool is_connecting;
 
     void Awake()
     {
@@ -22,6 +23,7 @@ public class Lobby : MonoBehaviourPunCallbacks
     }
     public void Connect()
     {
+        is_connecting = true;
         connection_progress.SetActive(true);
         control_panel.SetActive(false);
 
@@ -37,7 +39,9 @@ public class Lobby : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
-        PhotonNetwork.JoinRandomRoom();
+        if(is_connecting) {
+            PhotonNetwork.JoinRandomRoom();
+        }
     }
 
     public override void OnDisconnected(DisconnectCause cause)
@@ -51,5 +55,11 @@ public class Lobby : MonoBehaviourPunCallbacks
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = max_player });
+    }
+    
+    public override void OnJoinedRoom() {
+        if(PhotonNetwork.CurrentRoom.PlayerCount == 1) {
+            PhotonNetwork.LoadLevel("Game");
+        }
     }
 }
