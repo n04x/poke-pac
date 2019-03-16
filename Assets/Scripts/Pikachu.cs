@@ -40,4 +40,12 @@ public class Pikachu : MonoBehaviourPun
             this.transform.rotation = Quaternion.LookRotation(Vector3.back, Vector3.up);
         }
     }
+    private void OnCollisionEnter(Collision other) {
+        if(other.gameObject.tag == "pokeball") {
+            GameObject.Destroy(other.gameObject);
+            gameObject.GetComponent<PikachuManager>().scores++;
+
+            
+        }    
+    }
 }

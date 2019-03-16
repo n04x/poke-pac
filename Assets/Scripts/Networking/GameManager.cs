@@ -19,11 +19,15 @@ public class GameManager : MonoBehaviourPunCallbacks
         else
         {
             if(PikachuManager.local_pikachu_instance == null) {
-                PhotonNetwork.Instantiate(this.player_prefab.name, new Vector3(0f, 1f, 0f), Quaternion.identity, 0);
+                int player_count = PhotonNetwork.PlayerList.Length;
+                PhotonNetwork.Instantiate(this.player_prefab.name, spawn_position[player_count - 1].position, Quaternion.identity, 0);
             }
         }
     }
 
+    // public void OnJoinedRoom() {
+        
+    // }
     public void LeaveRoom() {
         PhotonNetwork.LeaveRoom();
     }
@@ -32,7 +36,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         if(!PhotonNetwork.IsMasterClient) {
             Debug.LogError("PhotonNetwork: Trying to laod a level but we are not the master client!");
         }
-        PhotonNetwork.LoadLevel("Game");
+        PhotonNetwork.LoadLevel("Game " + PhotonNetwork.CurrentRoom.PlayerCount);
     }
     public override void OnLeftRoom() {
         SceneManager.LoadScene(0);  // the connect to play area.

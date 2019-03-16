@@ -59,7 +59,7 @@ public class Lobby : MonoBehaviourPunCallbacks
     
     public override void OnJoinedRoom() {
         if(PhotonNetwork.CurrentRoom.PlayerCount == 1) {
-            PhotonNetwork.LoadLevel("Game");
+            PhotonNetwork.LoadLevel("Game 1");
         }
     }
 }
