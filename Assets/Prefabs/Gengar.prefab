@@ -811,9 +811,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1274347581126085837}
   - component: {fileID: 7543253468550051400}
-  - component: {fileID: 1837180319899748533}
-  - component: {fileID: 4103149992529620717}
-  - component: {fileID: 8822470468944545745}
+  - component: {fileID: 1277130855}
+  - component: {fileID: 6144498701016854834}
+  - component: {fileID: 5864988546773855094}
   m_Layer: 0
   m_Name: Gengar
   m_TagString: Untagged
@@ -848,7 +848,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 240
@@ -860,7 +860,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1837180319899748533
+--- !u!114 &1277130855
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -869,11 +869,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1274347581125791919}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df0d98e290893424d87655f0fdb9e9c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 4262e245937596b4e897bbb58f8f78e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pikachu_list: []
---- !u!114 &4103149992529620717
+  pokemon_list: []
+--- !u!114 &6144498701016854834
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -891,11 +891,11 @@ MonoBehaviour:
   Synchronization: 0
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 8822470468944545745}
+  - {fileID: 5864988546773855094}
   viewIdField: 0
-  InstantiationId: 0
+  InstantiationId: 1
   isRuntimeInstantiated: 0
---- !u!114 &8822470468944545745
+--- !u!114 &5864988546773855094
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

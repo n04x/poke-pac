@@ -1,37 +1,26 @@
-﻿using Photon.Pun;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PokemonMovement : MonoBehaviour
+public class SinglePlayerMovement : MonoBehaviour
 {
-    private PhotonView PV;
-    //private CharacterController CC;
-    private AvatarPokemonSetup avatar_pokemon_setup;
     public float speed;
-    public Text scores;
+
     // Start is called before the first frame update
     void Start()
     {
-        PV = GetComponent<PhotonView>();
-        avatar_pokemon_setup = GetComponent<AvatarPokemonSetup>();
-        scores = GameSetup.GS.scores;
+        //CC = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(PV.IsMine)
-        {
-            InputMovement();
-            scores.text = "Score: " + avatar_pokemon_setup.scores.ToString();
-        }
+        InputMovement();
     }
 
     void InputMovement()
     {
-        if(Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
             this.transform.rotation = Quaternion.LookRotation(Vector3.forward, Vector3.up);
             this.GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + Vector3.forward * speed * Time.deltaTime);
@@ -55,11 +44,11 @@ public class PokemonMovement : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "pokeball")
+        if (collision.gameObject.tag == "pokeball")
         {
             collision.gameObject.SetActive(false);
-            avatar_pokemon_setup.scores++;
-        } else
+        }
+        else
         {
             return;
         }

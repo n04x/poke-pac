@@ -35,5 +35,7 @@ MonoBehaviour:
   - RPC_CreatePlayer
   - RPC_LoadedGameScene
   - RPC_AddPokemon
+  - RPC_GengarPosition
+  - UpdateGengarTransform
   DisableAutoOpenWizard: 1
   ShowSettings: 1

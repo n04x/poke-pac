@@ -8,6 +8,10 @@ public class AvatarPokemonSetup : MonoBehaviour
     private PhotonView PV;
     public int pokemon_value;
     public GameObject my_pokemon;
+    public int scores;
+
+    public int pokemon_health;
+    public int pokemon_damage;
     // Start is called before the first frame update
     void Start()
     {
