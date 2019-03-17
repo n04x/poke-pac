@@ -164,7 +164,27 @@ ModelImporter:
     13700000: Bulbasaur
     13700002: Bulbasaur_LVine
     13700004: Bulbasaur_RVine
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #10'
+    second: {fileID: 2100000, guid: dc2286878803dbc4b9c146eaf4d3165c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #11'
+    second: {fileID: 2100000, guid: 25fd6d4733ada5c45ae93582a31d12fb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #12'
+    second: {fileID: 2100000, guid: 8e52024b4083e1243a944faea8b89240, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #13'
+    second: {fileID: 2100000, guid: 08cfc8293b644e348b897e882705594b, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
