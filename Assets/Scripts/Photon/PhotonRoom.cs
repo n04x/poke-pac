@@ -13,6 +13,8 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
     public static PhotonRoom room;
     private PhotonView PV;
 
+    GameObject myPlayer;
+
     public bool game_loaded;
     public int current_scene;
 
@@ -179,7 +181,18 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
         players_in_room = photon_players.Length;
         my_number_in_room = players_in_room;
         PhotonNetwork.NickName = my_number_in_room.ToString();
-
+        // GengarMovement.g.pokemon_list.Add(this.gameObject);
+        // GameObject myPlayer;
+        GameObject[] Players = GameObject.FindGameObjectsWithTag("Player");
+        foreach(GameObject p in Players) {
+            if(p.GetComponent<PhotonView>().IsMine) {
+                myPlayer = p;
+            }
+        }
+        GameObject[] Gengars = GameObject.FindGameObjectsWithTag("gengar");
+        foreach(GameObject g in Gengars) {
+            g.GetComponent<GengarMovement>().pokemon_list.Add(myPlayer);
+        }
         if(MultiplayerSetting.mp_setting.delayed_start)
         {
             Debug.Log("Displayer players in room out of max players possible (" + players_in_room + ":" + MultiplayerSetting.mp_setting.max_players + ")");
