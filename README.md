@@ -15,3 +15,4 @@ the environment is 2.5D style, with 3D assets. The path is one tile thick, the w
 ## Sources
 Bulbasaur, Charmander, Gengar, Pikachu, Squirtle, and Pokeball/Masterball https://www.models-resource.com/3ds/pokemonxy/
 Pokemon fonts: https://www.dafont.com/pokemon.font    
+Major source of Photon Unity Networking Assets explanation: Info Gamer - https://www.youtube.com/channel/UCyoayn_uVt2I55ZCUuBVRcQ    
