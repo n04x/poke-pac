@@ -16,7 +16,6 @@ public class PokemonMovement : MonoBehaviour
     {
         PV = GetComponent<PhotonView>();
         avatar_pokemon_setup = GetComponent<AvatarPokemonSetup>();
-
         scores = GameSetup.GS.scores;
     }
 

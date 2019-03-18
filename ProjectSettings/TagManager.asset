@@ -7,7 +7,6 @@ TagManager:
   - Walls
   - pokeball
   - masterball
-  - gengar
   layers:
   - Default
   - TransparentFX
