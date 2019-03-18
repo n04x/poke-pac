@@ -321,7 +321,7 @@ PrefabInstance:
     - target: {fileID: 1274347581125791919, guid: c1a4bfd844e539e4f8b132f70420c953,
         type: 3}
       propertyPath: m_Name
-      value: Gengar (1)
+      value: Gengar
       objectReference: {fileID: 0}
     - target: {fileID: 1274347581126085837, guid: c1a4bfd844e539e4f8b132f70420c953,
         type: 3}
@@ -571,7 +571,7 @@ PrefabInstance:
     - target: {fileID: 1274347581125791919, guid: c1a4bfd844e539e4f8b132f70420c953,
         type: 3}
       propertyPath: m_Name
-      value: Gengar (2)
+      value: Gengar
       objectReference: {fileID: 0}
     - target: {fileID: 1274347581126085837, guid: c1a4bfd844e539e4f8b132f70420c953,
         type: 3}

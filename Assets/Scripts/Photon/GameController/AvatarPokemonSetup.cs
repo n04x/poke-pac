@@ -15,6 +15,7 @@ public class AvatarPokemonSetup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GengarMovement.g.pokemon_list.Add(gameObject);
         PV = GetComponent<PhotonView>();
         if(PV.IsMine)
         {
