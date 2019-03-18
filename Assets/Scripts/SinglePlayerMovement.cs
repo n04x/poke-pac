@@ -41,6 +41,15 @@ public class SinglePlayerMovement : MonoBehaviour
             this.transform.rotation = Quaternion.LookRotation(Vector3.right, Vector3.up);
             this.GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + Vector3.right * speed * Time.deltaTime);
         }
+        if(transform.position.z > 9.0f) 
+        {
+            this.transform.position = new Vector3(transform.position.x, transform.position.y, -10.0f);
+        }
+        if(transform.position.z < -10.5f) 
+        {
+            this.transform.position = new Vector3(transform.position.x, transform.position.y, 8.5f);
+
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
