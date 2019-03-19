@@ -65,7 +65,8 @@ public class PlayerMovement : NetworkBehaviour
         if(collision.gameObject.tag == "pokeball")
         {
             collision.gameObject.SetActive(false);
-            avatar_pokemon_setup.scores++;
+            //avatar_pokemon_setup.scores++;
+            GetComponent<PlayerScores>().IncreaseScore();
         } else
         {
             return;
