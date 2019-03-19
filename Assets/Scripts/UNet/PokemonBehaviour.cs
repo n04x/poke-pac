@@ -95,7 +95,9 @@ public class PokemonBehaviour : NetworkBehaviour
             IncreaseScore();
         } else if(collision.gameObject.tag == "Gengar")
         {
-            tagged = true;
+            //tagged = true;
+            //GetComponent<BoxCollider>().enabled = false;
+            //GetComponent<MeshRenderer>().enabled = false;
         }
         else
         {
