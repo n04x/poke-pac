@@ -7,6 +7,7 @@ using UnityEngine.AI;
 
 public class GengarMovement : MonoBehaviour
 {
+    public static GengarMovement g;
     private PhotonView PV;
     private NavMeshAgent nav_mesh_agent;
     private MeshCollider mesh_collider;
@@ -21,7 +22,7 @@ public class GengarMovement : MonoBehaviour
         PV = GetComponent<PhotonView>();
         nav_mesh_agent = GetComponent<NavMeshAgent>();
         mesh_collider = GetComponent<MeshCollider>();
-        pokemon_list.Add(GameObject.FindGameObjectWithTag("Player"));
+        //pokemon_list.Add(GameObject.FindGameObjectWithTag("Player"));
     }
 
     // Update is called once per frame
@@ -82,6 +83,11 @@ public class GengarMovement : MonoBehaviour
         }
 
         return closest_pokemon;
+    }
+
+    [PunRPC] public void AddPokemon(GameObject p)
+    {
+        pokemon_list.Add(p);
     }
 
     [PunRPC] void RPC_GengarPosition()

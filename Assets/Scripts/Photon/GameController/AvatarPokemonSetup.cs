@@ -19,6 +19,7 @@ public class AvatarPokemonSetup : MonoBehaviour
         if(PV.IsMine)
         {
             PV.RPC("RPC_AddPokemon", RpcTarget.AllBuffered, PokemonInfo.PI.selected_pokemon);
+            
         }
     }
 

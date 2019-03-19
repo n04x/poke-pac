@@ -37,5 +37,6 @@ MonoBehaviour:
   - RPC_AddPokemon
   - RPC_GengarPosition
   - UpdateGengarTransform
+  - AddPokemon
   DisableAutoOpenWizard: 1
   ShowSettings: 1

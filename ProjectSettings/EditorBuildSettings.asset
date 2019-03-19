@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Menu.unity
     guid: 476dd80fdc5622b51894cd398ed6d800
   - enabled: 0
@@ -18,15 +18,21 @@ EditorBuildSettings:
     path: Assets/Scenes/Game.unity
     guid: f242286ef5f4ee8448cff8782e7c20a0
   - enabled: 0
-    path: Assets/Scenes/Game 2.unity
-    guid: 1a9c2685d8aed55f298c490401e10677
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Scenes/Game 3.unity
-    guid: 5848f516d8134f1edae7f365fd3d2bc4
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Scenes/Game 4.unity
-    guid: f58ca4871caba1835bb7601c2a837bd3
-  - enabled: 1
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: Assets/Scenes/Multiplayer.unity
     guid: f563a2fd38f7ee14f966e9234a53ec02
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 21c4a9f1dee46834f94ee8d744936349
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: d5d3c23e516d22e4ca8747773c2785fe
   m_configObjects: {}
