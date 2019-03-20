@@ -7,13 +7,12 @@ using UnityEngine.AI;
 
 public class GengarMovement : MonoBehaviour
 {
-    public static GengarMovement g;
     private PhotonView PV;
     private NavMeshAgent nav_mesh_agent;
     private MeshCollider mesh_collider;
     Vector3 syncPos = Vector3.zero;
     Quaternion syncRot = Quaternion.identity;
-    public List<GameObject> pokemon_list;
+    private PokemonListBehaviour pokemon_list;
     public Transform temp_target;
 
 
@@ -23,12 +22,13 @@ public class GengarMovement : MonoBehaviour
         PV = GetComponent<PhotonView>();
         nav_mesh_agent = GetComponent<NavMeshAgent>();
         mesh_collider = GetComponent<MeshCollider>();
-        //pokemon_list.Add(GameObject.FindGameObjectWithTag("Player"));
+        pokemon_list = GameObject.Find("Pokemon List").GetComponent<PokemonListBehaviour>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        AvatarPokemonSetup nearest_pokemon = FindClosestPokemon();
         if(!PV.IsMine)
         {
             transform.position = Vector3.Lerp(transform.position, syncPos, 0.1f);
@@ -39,47 +39,34 @@ public class GengarMovement : MonoBehaviour
         {
             PV.RPC("UpdateGengarTransform", RpcTarget.Others, transform.position, transform.rotation);
         }
-        if(pokemon_list.Count < 2)
+        
+        nav_mesh_agent.SetDestination(nearest_pokemon.transform.position);
+    }
+
+    private AvatarPokemonSetup FindClosestPokemon()
+    {
+        if(pokemon_list == null)
         {
-            pokemon_list.Add(GameObject.FindGameObjectWithTag("Player"));
+            pokemon_list = GameObject.Find("Pokemon List").GetComponent<PokemonListBehaviour>();
         }
-        GameObject closest_target = GetPokemon();
-        nav_mesh_agent.SetDestination(temp_target.transform.position);
+        ICollection<AvatarPokemonSetup> pokemons = pokemon_list.GetPokemon();
+        float distance = Int32.MaxValue;    // assign a ridiculous distance to be sure that will be override.
+        AvatarPokemonSetup closest_pokemon = null;
+        foreach(AvatarPokemonSetup p in pokemons)
+        {
+            float temp_d = Vector3.Distance(transform.position, p.transform.position);
+            if(temp_d < distance)
+            {
+                distance = temp_d;
+                closest_pokemon = p;
+            }
+        }
+        return closest_pokemon;
     }
 
     [PunRPC] void UpdateGengarTransform(Vector3 pos, Quaternion rot)
     {
         syncPos = pos;
         syncRot = rot;
-    }
-
-    private GameObject GetPokemon()
-    {
-        float distance = 100000f;
-        GameObject closest_pokemon = null;
-        foreach(GameObject p in pokemon_list)
-        {
-            if(p != null)
-            {
-                float d = Vector3.Distance(transform.position, p.transform.position);
-                if(d < distance)
-                {
-                    distance = d;
-                    closest_pokemon = p;
-                }
-            }
-        }
-
-        return closest_pokemon;
-    }
-
-    [PunRPC] public void AddPokemon(GameObject p)
-    {
-        pokemon_list.Add(p);
-    }
-
-    [PunRPC] void RPC_GengarPosition()
-    {
-
     }
 }

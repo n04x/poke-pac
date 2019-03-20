@@ -25,7 +25,6 @@ public class PokemonPlayer : MonoBehaviour
             Debug.LogWarning("The spawn pos number is: " + spawn_pos_pick);
             my_pokemon = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PokemonAvatar"), 
                 GameSetup.GS.spawn_positions[spawn_pos_pick].position, GameSetup.GS.spawn_positions[spawn_pos_pick].rotation, 0);
-            GengarMovement.g.AddPokemon(my_pokemon);
         }
         PV.RPC("UpdateSpawnIndexes", RpcTarget.AllBuffered, spawn_indexes);
     }

@@ -9,6 +9,7 @@ public class PokemonMovement : MonoBehaviour
     private PhotonView PV;
     //private CharacterController CC;
     private AvatarPokemonSetup avatar_pokemon_setup;
+    private PokemonListBehaviour pokemon_list;
     public float speed;
     public Text scores;
     // Start is called before the first frame update
@@ -16,7 +17,9 @@ public class PokemonMovement : MonoBehaviour
     {
         PV = GetComponent<PhotonView>();
         avatar_pokemon_setup = GetComponent<AvatarPokemonSetup>();
+        pokemon_list = GameObject.Find("Pokemon List").GetComponent<PokemonListBehaviour>();
         scores = GameSetup.GS.scores;
+        pokemon_list.AddPokemon(avatar_pokemon_setup);
     }
 
     // Update is called once per frame

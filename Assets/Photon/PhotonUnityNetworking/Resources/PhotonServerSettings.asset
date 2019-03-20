@@ -29,15 +29,12 @@ MonoBehaviour:
   EnableSupportLogger: 0
   RunInBackground: 1
   RpcList:
-  - DestroySpaceship
-  - Fire
-  - RespawnSpaceship
-  - RPC_CreatePlayer
-  - RPC_LoadedGameScene
-  - RPC_AddPokemon
-  - RPC_GengarPosition
-  - UpdateGengarTransform
   - AddPokemon
+  - RPC_AddPokemon
+  - RPC_CreatePlayer
+  - RPC_GengarPosition
+  - RPC_LoadedGameScene
+  - UpdateGengarTransform
   - UpdateSpawnIndexes
   DisableAutoOpenWizard: 1
   ShowSettings: 1
