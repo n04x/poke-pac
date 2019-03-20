@@ -1071,7 +1071,7 @@ GameObject:
   - component: {fileID: 6304}
   - component: {fileID: 5581670316867444467}
   - component: {fileID: 1770984366108297389}
-  - component: {fileID: 3622015340926953388}
+  - component: {fileID: 3237783925132641577}
   m_Layer: 0
   m_Name: PokemonAvatar
   m_TagString: Player
@@ -1188,7 +1188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5908b7f3740aad47b91c44870dd9dad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3622015340926953388
+--- !u!114 &3237783925132641577
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1197,11 +1197,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 147}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3754d9dc8be9b4e43be5215033331e8e, type: 3}
+  m_Script: {fileID: 11500000, guid: b0321cec089359e4c8a704529b1cf99a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  is_dead: 0
   myTransform: {fileID: 3157}
   lerpRate: 15
 --- !u!1 &148

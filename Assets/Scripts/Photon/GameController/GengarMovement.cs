@@ -14,6 +14,7 @@ public class GengarMovement : MonoBehaviour
     Vector3 syncPos = Vector3.zero;
     Quaternion syncRot = Quaternion.identity;
     public List<GameObject> pokemon_list;
+    public Transform temp_target;
 
 
     // Start is called before the first frame update
@@ -43,7 +44,7 @@ public class GengarMovement : MonoBehaviour
             pokemon_list.Add(GameObject.FindGameObjectWithTag("Player"));
         }
         GameObject closest_target = GetPokemon();
-        nav_mesh_agent.SetDestination(closest_target.transform.position);
+        nav_mesh_agent.SetDestination(temp_target.transform.position);
     }
 
     [PunRPC] void UpdateGengarTransform(Vector3 pos, Quaternion rot)
@@ -51,19 +52,6 @@ public class GengarMovement : MonoBehaviour
         syncPos = pos;
         syncRot = rot;
     }
-    //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    //{
-    //    if (stream.IsWriting)
-    //    {
-    //        stream.SendNext(transform.position);
-    //        stream.SendNext(transform.rotation);
-    //    }
-    //    else
-    //    {
-    //        this.transform.position = (Vector3)stream.ReceiveNext();
-    //        this.transform.rotation = (Quaternion)stream.ReceiveNext();
-    //    }
-    //}
 
     private GameObject GetPokemon()
     {

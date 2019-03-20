@@ -811,9 +811,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1274347581126085837}
   - component: {fileID: 7543253468550051400}
-  - component: {fileID: 4955116832384176159}
   - component: {fileID: 8435851626427257027}
   - component: {fileID: 6059250324259704639}
+  - component: {fileID: 1256204667}
+  - component: {fileID: 2111083847}
   m_Layer: 0
   m_Name: Gengar
   m_TagString: Gengar
@@ -860,21 +861,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &4955116832384176159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1274347581125791919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 934b895b355a6084dbae2d09a1e81b4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  gengar_transform: {fileID: 1274347581126085837}
-  lerpRate: 15
 --- !u!114 &8435851626427257027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -919,8 +905,46 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3, y: 4, z: 3}
-  m_Center: {x: 0, y: 2, z: 0}
+  m_Size: {x: 4, y: 4, z: 2.5}
+  m_Center: {x: 0, y: 2, z: 0.24}
+--- !u!114 &1256204667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274347581125791919}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &2111083847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274347581125791919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d81f021c30031449d467154a05c3d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  gengar_transform: {fileID: 1274347581126085837}
+  lerpRate: 15
+  pokemon_list: {fileID: 0}
 --- !u!1 &1274347581125791921
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 476dd80fdc5622b51894cd398ed6d800
   - enabled: 0
@@ -26,13 +26,13 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Multiplayer.unity
     guid: f563a2fd38f7ee14f966e9234a53ec02
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: 21c4a9f1dee46834f94ee8d744936349
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main.unity
     guid: d5d3c23e516d22e4ca8747773c2785fe
   m_configObjects: {}

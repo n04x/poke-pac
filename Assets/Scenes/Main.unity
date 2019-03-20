@@ -4922,8 +4922,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1469319500}
+  - component: {fileID: 1469319501}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Pokemon List
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4943,6 +4944,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1469319501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469319499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6374d9b8e17da6488fa54f2bc0c4a93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pokemon_list: []
 --- !u!1 &1791071009
 GameObject:
   m_ObjectHideFlags: 0
@@ -5122,16 +5136,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1274347581131005405, guid: 0c6234e759cbae9428be1bf2071a09ab,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4955116832384176159, guid: 0c6234e759cbae9428be1bf2071a09ab,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1122168536}
     - target: {fileID: 8435851626427257027, guid: 0c6234e759cbae9428be1bf2071a09ab,
         type: 3}
       propertyPath: m_AssetId.i0
@@ -5211,6 +5215,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AssetId.i15
       value: 171
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111083847, guid: 0c6234e759cbae9428be1bf2071a09ab, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c6234e759cbae9428be1bf2071a09ab, type: 3}
