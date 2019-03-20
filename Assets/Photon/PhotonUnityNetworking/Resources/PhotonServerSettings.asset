@@ -36,5 +36,6 @@ MonoBehaviour:
   - RPC_LoadedGameScene
   - UpdateGengarTransform
   - UpdateSpawnIndexes
+  - MazeReset
   DisableAutoOpenWizard: 1
   ShowSettings: 1

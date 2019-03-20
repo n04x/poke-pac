@@ -4,11 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
+using System.IO;
+using System;
 
 public class GameSetup : MonoBehaviour
 {
     public static GameSetup GS;
 
+    private PhotonView PV;
     public Transform[] spawn_positions;
     public Text scores;
     public Text timer;
@@ -16,9 +19,34 @@ public class GameSetup : MonoBehaviour
     private float minutes;
     private float seconds;
 
+    public int pokeballs_count;
+
+    private void Start()
+    {
+        PV = GetComponent<PhotonView>();
+        pokeballs_count = 312;
+    }
+
     private void Update() {
         GetTimer();
         timer.text = string.Format("{0:0}:{1:00}", minutes, seconds);
+        if(PhotonNetwork.IsMasterClient && pokeballs_count <= 0)
+        {
+            //MazeReset();
+            PV.RPC("MazeReset", RpcTarget.All);
+        }
+    }
+
+    [PunRPC] public void MazeReset()
+    {
+        GameObject[] pokeballs = GameObject.FindGameObjectsWithTag("pokeball");
+        Debug.LogWarning("pokeballs count: " + pokeballs.Length);
+        foreach(GameObject pokeball in pokeballs)
+        {
+            pokeball.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+            pokeball.GetComponent<SphereCollider>().enabled = true;
+        }
+        pokeballs_count = 15;
     }
 
     private void OnEnable()

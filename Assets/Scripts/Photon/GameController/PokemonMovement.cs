@@ -69,8 +69,11 @@ public class PokemonMovement : MonoBehaviour
     {
         if(collision.gameObject.tag == "pokeball")
         {
-            collision.gameObject.SetActive(false);
+            //collision.gameObject.SetActive(false);
+            collision.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+            collision.gameObject.GetComponent<SphereCollider>().enabled = false;
             avatar_pokemon_setup.scores++;
+            GameSetup.GS.pokeballs_count--;
         } else
         {
             return;

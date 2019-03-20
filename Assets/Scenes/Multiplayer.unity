@@ -321,6 +321,7 @@ GameObject:
   m_Component:
   - component: {fileID: 346369070}
   - component: {fileID: 346369069}
+  - component: {fileID: 346369071}
   m_Layer: 0
   m_Name: GameSetup
   m_TagString: Untagged
@@ -348,6 +349,7 @@ MonoBehaviour:
   scores: {fileID: 674003845}
   timer: {fileID: 1276673501}
   time_left: 240
+  pokeballs_count: 0
 --- !u!4 &346369070
 Transform:
   m_ObjectHideFlags: 0
@@ -362,6 +364,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &346369071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346369068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 2
+  InstantiationId: 2
+  isRuntimeInstantiated: 0
 --- !u!1 &360125823
 GameObject:
   m_ObjectHideFlags: 0
