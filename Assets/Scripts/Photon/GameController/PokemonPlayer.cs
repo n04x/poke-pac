@@ -18,7 +18,6 @@ public class PokemonPlayer : MonoBehaviour
         //Debug.LogWarning("SPAWN POSITION PICK BY GET PLAYER NUMBER: " + spawn_pos_pick);
         int spawn_pos_pick = (PV.ViewID / 1000) - 1;
         //int spawn_pos_pick = Random.Range(0, GameSetup.GS.spawn_positions.Length);
-        Debug.LogWarning("SPAWN POSITION PICK BY GET PLAYER NUMBER: " + spawn_pos_pick);
         if (PV.IsMine)
         {
             Debug.LogWarning("The coordinate for our spawn pos: " + GameSetup.GS.spawn_positions[spawn_pos_pick]);

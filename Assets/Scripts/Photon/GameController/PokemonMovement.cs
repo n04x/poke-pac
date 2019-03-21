@@ -74,7 +74,22 @@ public class PokemonMovement : MonoBehaviour
             collision.gameObject.GetComponent<SphereCollider>().enabled = false;
             avatar_pokemon_setup.scores++;
             GameSetup.GS.pokeballs_count--;
-        } else
+        }
+        if(collision.gameObject.tag == "masterball")
+        {
+            collision.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+            collision.gameObject.GetComponent<SphereCollider>().enabled = false;
+            
+        }
+        if(collision.gameObject.tag == "Player")
+        {
+            Debug.LogWarning("CONTACT WITH THE PLAYER");
+            float force = 300;
+            Vector3 dir = collision.contacts[0].point - transform.position;
+            dir = -dir.normalized;
+            GetComponent<Rigidbody>().AddForce(dir * force);
+        }
+        else
         {
             return;
         }

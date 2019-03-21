@@ -13,6 +13,7 @@ public class GameSetup : MonoBehaviour
 
     private PhotonView PV;
     public Transform[] spawn_positions;
+    public GameObject[] pokepuffs;
     public Text scores;
     public Text timer;
     public float time_left = 240.0f;    // 4 minutes.
@@ -25,6 +26,7 @@ public class GameSetup : MonoBehaviour
     {
         PV = GetComponent<PhotonView>();
         pokeballs_count = 312;
+        // start the game be disable pokepuffs.
     }
 
     private void Update() {
@@ -40,13 +42,24 @@ public class GameSetup : MonoBehaviour
     [PunRPC] public void MazeReset()
     {
         GameObject[] pokeballs = GameObject.FindGameObjectsWithTag("pokeball");
-        Debug.LogWarning("pokeballs count: " + pokeballs.Length);
         foreach(GameObject pokeball in pokeballs)
         {
             pokeball.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
             pokeball.GetComponent<SphereCollider>().enabled = true;
         }
         pokeballs_count = 15;
+
+        GameObject[] masterballs = GameObject.FindGameObjectsWithTag("masterball");
+        foreach(GameObject masterball in masterballs)
+        {
+            masterball.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+            masterball.GetComponent<SphereCollider>().enabled = true;
+        }
+    }
+
+    [PunRPC] void PokePuffsSpawn()
+    {
+
     }
 
     private void OnEnable()

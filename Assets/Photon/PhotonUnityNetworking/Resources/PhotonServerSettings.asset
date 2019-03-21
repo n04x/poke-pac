@@ -37,5 +37,6 @@ MonoBehaviour:
   - UpdateGengarTransform
   - UpdateSpawnIndexes
   - MazeReset
+  - PokePuffsSpawn
   DisableAutoOpenWizard: 1
   ShowSettings: 1
