@@ -872,7 +872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4262e245937596b4e897bbb58f8f78e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pokemon_list: []
+  temp_target: {fileID: 0}
 --- !u!114 &6144498701016854834
 MonoBehaviour:
   m_ObjectHideFlags: 0

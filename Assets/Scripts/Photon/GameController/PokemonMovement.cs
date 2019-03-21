@@ -89,9 +89,5 @@ public class PokemonMovement : MonoBehaviour
             dir = -dir.normalized;
             GetComponent<Rigidbody>().AddForce(dir * force);
         }
-        else
-        {
-            return;
-        }
     }
 }

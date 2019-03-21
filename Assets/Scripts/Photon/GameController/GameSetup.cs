@@ -13,12 +13,12 @@ public class GameSetup : MonoBehaviour
 
     private PhotonView PV;
     public Transform[] spawn_positions;
-    public GameObject[] pokepuffs;
     public Text scores;
     public Text timer;
     public float time_left = 240.0f;    // 4 minutes.
     private float minutes;
     private float seconds;
+    public bool pokepuff_eaten = false;
 
     public int pokeballs_count;
 
@@ -32,6 +32,11 @@ public class GameSetup : MonoBehaviour
     private void Update() {
         GetTimer();
         timer.text = string.Format("{0:0}:{1:00}", minutes, seconds);
+
+        if(PhotonNetwork.IsMasterClient && pokepuff_eaten) {
+            PV.RPC("MazeReset", RpcTarget.All);
+            pokepuff_eaten = false;
+        }
         if(PhotonNetwork.IsMasterClient && pokeballs_count <= 0)
         {
             //MazeReset();
@@ -55,11 +60,6 @@ public class GameSetup : MonoBehaviour
             masterball.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
             masterball.GetComponent<SphereCollider>().enabled = true;
         }
-    }
-
-    [PunRPC] void PokePuffsSpawn()
-    {
-
     }
 
     private void OnEnable()
