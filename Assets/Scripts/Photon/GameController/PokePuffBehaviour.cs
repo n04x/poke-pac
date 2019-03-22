@@ -5,7 +5,7 @@ using UnityEngine;
 public class PokePuffBehaviour : MonoBehaviour
 {
     SkinnedMeshRenderer[] meshes;
-    public float spawn_timer = 30.0f;
+    public float spawn_timer = 30.0f;   // spawn the pokebuff every 30 seconds.
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +33,10 @@ public class PokePuffBehaviour : MonoBehaviour
     private void OnCollisionEnter(Collision other) {
         if(other.gameObject.tag == "Player") {
             GameSetup.GS.pokepuff_eaten = true;
+            foreach (SkinnedMeshRenderer sm in meshes)
+            {
+                sm.enabled = false;
+            }
         } else
         {
             return;
