@@ -12,13 +12,17 @@ public class PokemonMovement : MonoBehaviour
     private PokemonListBehaviour pokemon_list;
     public float speed;
     public Text scores;
+    public string pokemon_name;
+    public bool game_over;
     // Start is called before the first frame update
     void Start()
     {
         PV = GetComponent<PhotonView>();
+        pokemon_name = PV.Owner.NickName;
         avatar_pokemon_setup = GetComponent<AvatarPokemonSetup>();
         pokemon_list = GameObject.Find("Pokemon List").GetComponent<PokemonListBehaviour>();
         scores = GameSetup.GS.scores;
+        avatar_pokemon_setup.player_name = pokemon_name;
         pokemon_list.AddPokemon(avatar_pokemon_setup);
     }
 
@@ -27,7 +31,11 @@ public class PokemonMovement : MonoBehaviour
     {
         if(PV.IsMine)
         {
-            InputMovement();
+            if(!game_over)
+            {
+                InputMovement();
+            }
+            avatar_pokemon_setup.player_name = pokemon_name;
             scores.text = "Score: " + avatar_pokemon_setup.scores.ToString();
         }
     }

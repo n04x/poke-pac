@@ -180,7 +180,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
         photon_players = PhotonNetwork.PlayerList;
         players_in_room = photon_players.Length;
         my_number_in_room = players_in_room;
-        PhotonNetwork.NickName = my_number_in_room.ToString();
+        //PhotonNetwork.NickName = my_number_in_room.ToString();
 
         if(MultiplayerSetting.mp_setting.delayed_start)
         {

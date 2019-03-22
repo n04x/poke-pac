@@ -15,7 +15,9 @@ public class GameSetup : MonoBehaviour
     public Transform[] spawn_positions;
     public Text scores;
     public Text timer;
+    public Text game_over_text;
     public float time_left = 240.0f;    // 4 minutes.
+
     private float minutes;
     private float seconds;
     public bool pokepuff_eaten = false;
@@ -32,7 +34,11 @@ public class GameSetup : MonoBehaviour
     private void Update() {
         GetTimer();
         timer.text = string.Format("{0:0}:{1:00}", minutes, seconds);
-
+        if(PhotonNetwork.IsMasterClient && time_left < 0)
+        {
+            PV.RPC("GameOver", RpcTarget.All);
+            //GameOver();
+        }
         if(PhotonNetwork.IsMasterClient && pokepuff_eaten) {
             PV.RPC("MazeReset", RpcTarget.All);
             pokepuff_eaten = false;
@@ -85,6 +91,25 @@ public class GameSetup : MonoBehaviour
         SceneManager.LoadScene(MultiplayerSetting.mp_setting.menu_scene);
     }
 
+    [PunRPC] void GameOver()
+    {
+        time_left = 0.0f;
+        PokemonListBehaviour pokemons_list = GameObject.Find("Pokemon List").GetComponent<PokemonListBehaviour>();
+        ICollection<AvatarPokemonSetup> pokemons = pokemons_list.GetPokemon();
+        int winner_score = 0;
+        string winner_name = null;
+        AvatarPokemonSetup winner_pokemon = null;
+        foreach(AvatarPokemonSetup p in pokemons)
+        {
+            p.GetComponentInChildren<PokemonMovement>().game_over = true;
+            if(p.scores > winner_score)
+            {
+                winner_score = p.scores;
+                winner_pokemon = p;
+            }
+        }
+        game_over_text.text = "Player " + winner_pokemon.player_name + " win!";
+    }
     void GetTimer() {
         time_left -= Time.deltaTime;
         minutes = Mathf.Floor(time_left / 60);

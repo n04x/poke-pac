@@ -1180,6 +1180,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   scores: {fileID: 0}
+  pokemon_name: 
+  game_over: 0
 --- !u!114 &4844935203761400660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1195,6 +1197,7 @@ MonoBehaviour:
   pokemon_value: 0
   my_pokemon: {fileID: 0}
   scores: 0
+  player_name: 
   pokemon_health: 100
   pokemon_damage: 25
 --- !u!114 &9043582474884872334
