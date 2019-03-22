@@ -15,9 +15,15 @@ the environment is 2.5D style, with 3D assets. The path is one tile thick, the w
 ## R2) Basic Networked Multiplayer Pacman Game    
 The network component that are being used in the project are Photo Engine, downloaded from Unity Assets store. It provides a lot of feature and host migration support as well, which is one of the main reason that I picked it. The Ghost used in the game are Gengar pokemons, its movement is accomplished by using `NavMesh` component provided by Unity 3D. The player move its pokemon by using the standard WASD key control.    
 Player has spawning location at each corner of the map. This functionality is stored in **PokemonPlayer.cs** script file, how it works, it will simply get the Photon ID of the player and store it as integer: `int spawn_pos_pick = (PV.ViewID / 1000) - 1`, basically the ID of each player goes like this: 1000, 2000, 3000, 4000. so we divide it by 1000 and substract it by 1 to get its respective position. This is not a random feature, the position are fixed by the ID of each player that join the game.    
+
 There is also a timer implemented shown at upper left corner of the map. It is sets to 4 minutes game, the game will end after 4 minutes. The game over condition will be implemented in the `GameSetup.cs` script.    
+
 The pokeball will be reset once the map has been cleared out of it, meaning there is no more pokeball left in the game. Then it will re-enable the renderer as well the collider, in the function `MazeReset()` that been called from Update only if the call is from Master Client and the number of pokeball is below zero. The functions are stored in **GameSetup.cs** file.    
+
 During the game, 4 PokePuffs will spawn every 30 seconds, it will allows the playe who touch it to reset the maze, respawning all eaten pokeballs and the game keeps going on until the timer reach zero. The PokePuff behaviour is stored in **PokePuffBehaviour.cs** file that is attached to PokePuff game object of the game.    
+
+The winning condition implemented is a simple one, once the timer reach to zero, the function `GameOver()` is called in the **GameSetup.cs** script file, it will then compare all player score and the highest one win.    
+
 
 ## R3) Advanced Networked Multiplayer Pacman Game
 The Master Balls (power dots) are located at each corner of the map.
