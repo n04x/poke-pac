@@ -10,7 +10,7 @@ public class PokemonMovement : MonoBehaviour
     //private CharacterController CC;
     private AvatarPokemonSetup avatar_pokemon_setup;
     private PokemonListBehaviour pokemon_list;
-    [SerializeField] private float speed = 5;
+    private float speed = 5;
     public List<GameObject> evolve_pokemon;
     public Text scores;
     public string pokemon_name;
@@ -94,7 +94,7 @@ public class PokemonMovement : MonoBehaviour
         speed = 7.0f;
         evolve_pokemon[0].SetActive(false);
         evolve_pokemon[1].SetActive(true);
-        evolve_duration = 5.0f;
+        evolve_duration = 7.5f;
     }
     
     [PunRPC] void Devolve()
