@@ -110,6 +110,10 @@ public class PokemonMovement : MonoBehaviour
             //collision.gameObject.SetActive(false);
             collision.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
             collision.gameObject.GetComponent<SphereCollider>().enabled = false;
+            if(PV.IsMine)
+            {
+                collision.gameObject.GetComponent<AudioSource>().Play();
+            }
             avatar_pokemon_setup.scores++;
             GameSetup.GS.pokeballs_count--;
         }
