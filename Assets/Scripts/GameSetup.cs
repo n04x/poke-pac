@@ -60,12 +60,12 @@ public class GameSetup : MonoBehaviour
         }
         pokeballs_count = POKEBALLS;
 
-        GameObject[] masterballs = GameObject.FindGameObjectsWithTag("masterball");
-        foreach(GameObject masterball in masterballs)
-        {
-            masterball.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
-            masterball.GetComponent<SphereCollider>().enabled = true;
-        }
+        //GameObject[] masterballs = GameObject.FindGameObjectsWithTag("masterball");
+        //foreach(GameObject masterball in masterballs)
+        //{
+        //    masterball.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+        //    masterball.GetComponent<SphereCollider>().enabled = true;
+        //}
     }
 
     private void OnEnable()

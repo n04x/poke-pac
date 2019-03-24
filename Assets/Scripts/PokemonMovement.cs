@@ -87,6 +87,7 @@ public class PokemonMovement : MonoBehaviour
         {
             collision.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
             collision.gameObject.GetComponent<SphereCollider>().enabled = false;
+            collision.gameObject.GetComponent<MasterBallBehaviour>().spawned = false;
             
         }
         if(collision.gameObject.tag == "Player")
