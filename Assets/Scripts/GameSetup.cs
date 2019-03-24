@@ -10,7 +10,7 @@ using System;
 public class GameSetup : MonoBehaviour
 {
     public static GameSetup GS;
-
+    const int POKEBALLS = 312;
     private PhotonView PV;
     public Transform[] spawn_positions;
     public Text scores;
@@ -27,7 +27,7 @@ public class GameSetup : MonoBehaviour
     private void Start()
     {
         PV = GetComponent<PhotonView>();
-        pokeballs_count = 312;
+        pokeballs_count = POKEBALLS;
         // start the game be disable pokepuffs.
     }
 
@@ -58,7 +58,7 @@ public class GameSetup : MonoBehaviour
             pokeball.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
             pokeball.GetComponent<SphereCollider>().enabled = true;
         }
-        pokeballs_count = 15;
+        pokeballs_count = POKEBALLS;
 
         GameObject[] masterballs = GameObject.FindGameObjectsWithTag("masterball");
         foreach(GameObject masterball in masterballs)
