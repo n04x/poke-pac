@@ -97,7 +97,6 @@ public class GameSetup : MonoBehaviour
         PokemonListBehaviour pokemons_list = GameObject.Find("Pokemon List").GetComponent<PokemonListBehaviour>();
         ICollection<AvatarPokemonSetup> pokemons = pokemons_list.GetPokemon();
         int winner_score = 0;
-        string winner_name = null;
         AvatarPokemonSetup winner_pokemon = null;
         foreach(AvatarPokemonSetup p in pokemons)
         {
@@ -110,6 +109,7 @@ public class GameSetup : MonoBehaviour
         }
         game_over_text.text = "Player " + winner_pokemon.player_name + " win!";
     }
+
     void GetTimer() {
         time_left -= Time.deltaTime;
         minutes = Mathf.Floor(time_left / 60);

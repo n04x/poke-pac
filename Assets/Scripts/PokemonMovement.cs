@@ -40,7 +40,8 @@ public class PokemonMovement : MonoBehaviour
                 evolve_duration -= Time.deltaTime;
                 if(evolve_duration < 0)
                 {
-                    Devolve();
+                    //Devolve();
+                    PV.RPC("Devolve", RpcTarget.All);
                 }
             }
             if(!game_over)
@@ -96,7 +97,7 @@ public class PokemonMovement : MonoBehaviour
         evolve_duration = 5.0f;
     }
     
-    void Devolve()
+    [PunRPC] void Devolve()
     {
         Debug.LogWarning("Inside the Devolve loop");
         master_ball_eaten = false;
@@ -116,19 +117,35 @@ public class PokemonMovement : MonoBehaviour
             avatar_pokemon_setup.scores++;
             GameSetup.GS.pokeballs_count--;
         }
-        if(collision.gameObject.tag == "masterball")
+        if(collision.gameObject.tag == "masterball" && !master_ball_eaten)
         {
             collision.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
             collision.gameObject.GetComponent<SphereCollider>().enabled = false;
             collision.gameObject.GetComponent<MasterBallBehaviour>().spawned = false;
             Evolve();
         }
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "Player" && !master_ball_eaten)
         {
             float force = 300;
             Vector3 dir = collision.contacts[0].point - transform.position;
             dir = -dir.normalized;
             GetComponent<Rigidbody>().AddForce(dir * force);
+        }
+        else if(collision.gameObject.tag == "Player" && master_ball_eaten)
+        {
+            if(!collision.gameObject.GetComponent<PokemonMovement>().master_ball_eaten)
+            {
+                Destroy(collision.gameObject);
+            }
+        }
+        if(collision.gameObject.tag == "Gengar" && !master_ball_eaten)
+        {
+            GetComponent<Transform>().position = avatar_pokemon_setup.start_position.position;
+            avatar_pokemon_setup.scores -= 10;
+        }
+        else
+        {
+            return;
         }
     }
 }

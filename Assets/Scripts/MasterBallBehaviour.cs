@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class MasterBallBehaviour : MonoBehaviour
 {
-    private float spawn_timer = 10.0f;
-    const float TIMER_VALUE = 0.5f;
-    private float flashing_timer = TIMER_VALUE;
+    const float FLASH_TIMER_VALUE = 0.5f;
+    const float SPAWN_TIMER_VALUE = 10.0f;
+    private float flashing_timer = FLASH_TIMER_VALUE;
+    private float spawn_timer = SPAWN_TIMER_VALUE;
     public bool spawned = false;
     private SkinnedMeshRenderer mesh;
     private SphereCollider sphere_collider;
@@ -50,13 +51,14 @@ public class MasterBallBehaviour : MonoBehaviour
         if(flashing_timer < 0.0 && mesh.enabled)
         {
             mesh.enabled = false;
-            flashing_timer = TIMER_VALUE;
+            flashing_timer = FLASH_TIMER_VALUE;
         }
         else if(flashing_timer < 0.0 && !mesh.enabled)
         {
             mesh.enabled = true;
-            flashing_timer = TIMER_VALUE;
+            flashing_timer = FLASH_TIMER_VALUE;
 
         }
+        spawn_timer = SPAWN_TIMER_VALUE;
     }
 }

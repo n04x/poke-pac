@@ -1201,8 +1201,7 @@ MonoBehaviour:
   my_pokemon: {fileID: 0}
   scores: 0
   player_name: 
-  pokemon_health: 100
-  pokemon_damage: 25
+  start_position: {fileID: 0}
 --- !u!114 &9043582474884872334
 MonoBehaviour:
   m_ObjectHideFlags: 0
