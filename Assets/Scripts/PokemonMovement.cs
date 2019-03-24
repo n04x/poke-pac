@@ -125,6 +125,10 @@ public class PokemonMovement : MonoBehaviour
             collision.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
             collision.gameObject.GetComponent<SphereCollider>().enabled = false;
             collision.gameObject.GetComponent<MasterBallBehaviour>().spawned = false;
+            if(PV.IsMine)
+            {
+                GetComponent<AudioSource>().Play(); // Alert everyone that a player ate a PokePuff
+            }
             Evolve();
         }
 
@@ -152,6 +156,10 @@ public class PokemonMovement : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Gengar" && master_ball_eaten)
         {
+            if(PV.IsMine)
+            {
+                collision.gameObject.GetComponent<AudioSource>().Play();
+            }
             collision.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
         }
         else
