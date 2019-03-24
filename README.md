@@ -26,7 +26,7 @@ The winning condition implemented is a simple one, once the timer reach to zero,
 
 The Ghost in this game are represented by 3 Gengar, they will chase the closest player by using NavMesh, and a loop that calculate the distance between Gengar and each pokemon. When Gengar and Pokemon collides, the pokemon, if it is not in evolved mode, will go back to the spawning point and lose 10 points as well.    
 
-The Audio in the game is only Local to the player, the audio is for Pokeball, Masterball and PokePuff.    
+The Audio in the game is only Local to the player, the audio is for Pokeball, Masterball and when Gengar has been eaten.    
 
 ## R3) Advanced Networked Multiplayer Pacman Game
 The Master Balls (power dots) are located at each corner of the map. When a player eat one, it will provide a temporary speed buff (1.5x) as well as a new aspect which is the evolved *(last evolution)* aspect of the pokemon that allow him to eat Gengar NPC and to eliminate other Player from the game.The masterball will spawn every 25 seconds, and it will remains as long as it has not been collected. Once collected, the timer reset and will be respawn again in 25 more seconds.
