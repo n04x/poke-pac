@@ -10,10 +10,13 @@ public class PokemonMovement : MonoBehaviour
     //private CharacterController CC;
     private AvatarPokemonSetup avatar_pokemon_setup;
     private PokemonListBehaviour pokemon_list;
-    public float speed;
+    [SerializeField] private float speed = 5;
+    public List<GameObject> evolve_pokemon;
     public Text scores;
     public string pokemon_name;
     public bool game_over;
+    public bool master_ball_eaten;
+    public float evolve_duration;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +27,7 @@ public class PokemonMovement : MonoBehaviour
         scores = GameSetup.GS.scores;
         avatar_pokemon_setup.player_name = pokemon_name;
         pokemon_list.AddPokemon(avatar_pokemon_setup);
+        master_ball_eaten = false;
     }
 
     // Update is called once per frame
@@ -31,6 +35,14 @@ public class PokemonMovement : MonoBehaviour
     {
         if(PV.IsMine)
         {
+            if (master_ball_eaten)
+            {
+                evolve_duration -= Time.deltaTime;
+                if(evolve_duration < 0)
+                {
+                    Devolve();
+                }
+            }
             if(!game_over)
             {
                 InputMovement();
@@ -73,6 +85,27 @@ public class PokemonMovement : MonoBehaviour
 
         }
     }
+
+    void Evolve()
+    {
+        Debug.LogWarning("Inside the Evolve loop");
+        master_ball_eaten = true;
+        speed = 10.0f;
+        evolve_pokemon[0].SetActive(false);
+        evolve_pokemon[1].SetActive(true);
+        evolve_duration = 5.0f;
+    }
+    
+    void Devolve()
+    {
+        Debug.LogWarning("Inside the Devolve loop");
+        master_ball_eaten = false;
+        speed = 5.0f;
+        evolve_pokemon[0].SetActive(true);
+        evolve_pokemon[1].SetActive(false);
+        evolve_duration = 5.0f;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "pokeball")
@@ -88,11 +121,10 @@ public class PokemonMovement : MonoBehaviour
             collision.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
             collision.gameObject.GetComponent<SphereCollider>().enabled = false;
             collision.gameObject.GetComponent<MasterBallBehaviour>().spawned = false;
-            
+            Evolve();
         }
         if(collision.gameObject.tag == "Player")
         {
-            Debug.LogWarning("CONTACT WITH THE PLAYER");
             float force = 300;
             Vector3 dir = collision.contacts[0].point - transform.position;
             dir = -dir.normalized;

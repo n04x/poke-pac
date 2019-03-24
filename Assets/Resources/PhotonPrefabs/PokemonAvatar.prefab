@@ -1179,9 +1179,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  evolve_pokemon: []
   scores: {fileID: 0}
   pokemon_name: 
   game_over: 0
+  master_ball_eaten: 0
+  evolve_duration: 0
 --- !u!114 &4844935203761400660
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,6 +9,8 @@ TagManager:
   - masterball
   - Gengar
   - pokepuff
+  - evolve
+  - default
   layers:
   - Default
   - TransparentFX
