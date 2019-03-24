@@ -20,15 +20,16 @@ There is also a timer implemented shown at upper left corner of the map. It is s
 
 The pokeball will be reset once the map has been cleared out of it, meaning there is no more pokeball left in the game. Then it will re-enable the renderer as well the collider, in the function `MazeReset()` that been called from Update only if the call is from Master Client and the number of pokeball is below zero. The functions are stored in **GameSetup.cs** file.    
 
-During the game, 4 PokePuffs will spawn every 30 seconds, it will allows the playe who touch it to reset the maze, respawning all eaten pokeballs and the game keeps going on until the timer reach zero. The PokePuff behaviour is stored in **PokePuffBehaviour.cs** file that is attached to PokePuff game object of the game.    
+During the game, 4 PokePuffs will spawn every 35 seconds, it will allows the playe who touch it to reset the maze, respawning all eaten pokeballs and the game keeps going on until the timer reach zero. The PokePuff behaviour is stored in **PokePuffBehaviour.cs** file that is attached to PokePuff game object of the game.    
 
 The winning condition implemented is a simple one, once the timer reach to zero, the function `GameOver()` is called in the **GameSetup.cs** script file, it will then compare all player score and the highest one win.    
 
 The Ghost in this game are represented by 3 Gengar, they will chase the closest player by using NavMesh, and a loop that calculate the distance between Gengar and each pokemon. When Gengar and Pokemon collides, the pokemon, if it is not in evolved mode, will go back to the spawning point and lose 10 points as well.    
 
+The Audio in the game is only Local to the player, the audio is for Pokeball, Masterball and PokePuff.    
 
 ## R3) Advanced Networked Multiplayer Pacman Game
-The Master Balls (power dots) are located at each corner of the map. When a player eat one, it will provide a temporary speed buff (1.5x) as well as a new aspect which is the evolved *(last evolution)* aspect of the pokemon that allow him to eat Gengar NPC and to eliminate other Player from the game. 
+The Master Balls (power dots) are located at each corner of the map. When a player eat one, it will provide a temporary speed buff (1.5x) as well as a new aspect which is the evolved *(last evolution)* aspect of the pokemon that allow him to eat Gengar NPC and to eliminate other Player from the game.The masterball will spawn every 25 seconds, and it will remains as long as it has not been collected. Once collected, the timer reset and will be respawn again in 25 more seconds.
 
 ## Sources
 Bulbasaur, Charmander, Gengar, Pikachu, Squirtle, and Pokeball/Masterball https://www.models-resource.com/3ds/pokemonxy/
