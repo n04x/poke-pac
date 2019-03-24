@@ -24,6 +24,8 @@ During the game, 4 PokePuffs will spawn every 30 seconds, it will allows the pla
 
 The winning condition implemented is a simple one, once the timer reach to zero, the function `GameOver()` is called in the **GameSetup.cs** script file, it will then compare all player score and the highest one win.    
 
+The Ghost in this game are represented by 3 Gengar, they will chase the closest player by using NavMesh, and a loop that calculate the distance between Gengar and each pokemon. When Gengar and Pokemon collides, the pokemon, if it is not in evolved mode, will go back to the spawning point and lose 10 points as well.    
+
 
 ## R3) Advanced Networked Multiplayer Pacman Game
 The Master Balls (power dots) are located at each corner of the map.
