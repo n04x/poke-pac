@@ -28,7 +28,7 @@ The Ghost in this game are represented by 3 Gengar, they will chase the closest 
 
 
 ## R3) Advanced Networked Multiplayer Pacman Game
-The Master Balls (power dots) are located at each corner of the map.
+The Master Balls (power dots) are located at each corner of the map. When a player eat one, it will provide a temporary speed buff (1.5x) as well as a new aspect which is the evolved *(last evolution)* aspect of the pokemon that allow him to eat Gengar NPC and to eliminate other Player from the game. 
 
 ## Sources
 Bulbasaur, Charmander, Gengar, Pikachu, Squirtle, and Pokeball/Masterball https://www.models-resource.com/3ds/pokemonxy/
