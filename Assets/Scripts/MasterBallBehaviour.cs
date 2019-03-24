@@ -5,7 +5,7 @@ using UnityEngine;
 public class MasterBallBehaviour : MonoBehaviour
 {
     const float FLASH_TIMER_VALUE = 0.5f;
-    const float SPAWN_TIMER_VALUE = 10.0f;
+    const float SPAWN_TIMER_VALUE = 25.0f;
     private float flashing_timer = FLASH_TIMER_VALUE;
     private float spawn_timer = SPAWN_TIMER_VALUE;
     public bool spawned = false;

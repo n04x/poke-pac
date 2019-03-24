@@ -91,7 +91,7 @@ public class PokemonMovement : MonoBehaviour
     {
         Debug.LogWarning("Inside the Evolve loop");
         master_ball_eaten = true;
-        speed = 10.0f;
+        speed = 7.0f;
         evolve_pokemon[0].SetActive(false);
         evolve_pokemon[1].SetActive(true);
         evolve_duration = 5.0f;
@@ -109,6 +109,7 @@ public class PokemonMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        // COLLISION WITH POKEBALL
         if(collision.gameObject.tag == "pokeball")
         {
             //collision.gameObject.SetActive(false);
@@ -117,6 +118,7 @@ public class PokemonMovement : MonoBehaviour
             avatar_pokemon_setup.scores++;
             GameSetup.GS.pokeballs_count--;
         }
+        // COLLISION WITH MASTERBALL
         if(collision.gameObject.tag == "masterball" && !master_ball_eaten)
         {
             collision.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
@@ -124,6 +126,8 @@ public class PokemonMovement : MonoBehaviour
             collision.gameObject.GetComponent<MasterBallBehaviour>().spawned = false;
             Evolve();
         }
+
+        // COLLISION BETWEEN TWO PLAYER, TWO POSSIBLE SCENARIO
         if(collision.gameObject.tag == "Player" && !master_ball_eaten)
         {
             float force = 300;
@@ -138,10 +142,16 @@ public class PokemonMovement : MonoBehaviour
                 Destroy(collision.gameObject);
             }
         }
-        if(collision.gameObject.tag == "Gengar" && !master_ball_eaten)
+        
+        // COLLISION WITH GENGAR, TWO POSSIBLE SCENARIO
+        if (collision.gameObject.tag == "Gengar" && !master_ball_eaten)
         {
             GetComponent<Transform>().position = avatar_pokemon_setup.start_position.position;
             avatar_pokemon_setup.scores -= 10;
+        }
+        else if(collision.gameObject.tag == "Gengar" && master_ball_eaten)
+        {
+            collision.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
         }
         else
         {
