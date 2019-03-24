@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class MasterBallBehaviour : MonoBehaviour
 {
-    const float FLASH_TIMER_VALUE = 0.5f;
-    const float SPAWN_TIMER_VALUE = 25.0f;
+    #region Script Variables
     private float flashing_timer = FLASH_TIMER_VALUE;
     private float spawn_timer = SPAWN_TIMER_VALUE;
-    public bool spawned = false;
     private SkinnedMeshRenderer mesh;
     private SphereCollider sphere_collider;
+
+    const float FLASH_TIMER_VALUE = 0.5f;
+    const float SPAWN_TIMER_VALUE = 25.0f;
+
+    public bool spawned = false;
+
+    #endregion
+
+    #region MonoBehaviour Functions
     // Start is called before the first frame update
     void Start()
     {
@@ -61,4 +68,6 @@ public class MasterBallBehaviour : MonoBehaviour
         }
         spawn_timer = SPAWN_TIMER_VALUE;
     }
+
+    #endregion
 }

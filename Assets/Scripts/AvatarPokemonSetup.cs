@@ -6,12 +6,18 @@ using UnityEngine;
 
 public class AvatarPokemonSetup : MonoBehaviour
 {
+    #region Script Variables
     private PhotonView PV;
-    public int pokemon_value;
-    public GameObject my_pokemon;
+    private int pokemon_value;
+    private GameObject my_pokemon;
+
     public int scores;
     public string player_name;
     public Transform start_position;
+
+    #endregion
+
+    #region MonoBehaviour Functions
     // Start is called before the first frame update
     void Start()
     {
@@ -38,9 +44,13 @@ public class AvatarPokemonSetup : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region PunRPC Functions
     [PunRPC] void RPC_AddPokemon(int which_pokemon)
     {
         pokemon_value = which_pokemon;
         my_pokemon = Instantiate(PokemonInfo.PI.all_pokemons[which_pokemon], transform.position, transform.rotation, transform);
     }
+    #endregion
 }

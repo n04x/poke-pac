@@ -9,21 +9,25 @@ using System;
 
 public class GameSetup : MonoBehaviour
 {
-    public static GameSetup GS;
-    const int POKEBALLS = 312;
+    #region Script Variables
+    private float minutes;
+    private float seconds;
     private PhotonView PV;
+
+    const int POKEBALLS = 312;
+
+    public static GameSetup GS;
     public Transform[] spawn_positions;
     public Text scores;
     public Text timer;
     public Text game_over_text;
     public float time_left = 240.0f;    // 4 minutes.
-
-    private float minutes;
-    private float seconds;
     public bool pokepuff_eaten = false;
-
     public int pokeballs_count;
 
+    #endregion
+
+    #region MonoBehaviour functions
     private void Start()
     {
         PV = GetComponent<PhotonView>();
@@ -37,7 +41,6 @@ public class GameSetup : MonoBehaviour
         if(PhotonNetwork.IsMasterClient && time_left < 0)
         {
             PV.RPC("GameOver", RpcTarget.All);
-            //GameOver();
         }
         if(PhotonNetwork.IsMasterClient && pokepuff_eaten) {
             PV.RPC("MazeReset", RpcTarget.All);
@@ -45,11 +48,28 @@ public class GameSetup : MonoBehaviour
         }
         if(PhotonNetwork.IsMasterClient && pokeballs_count <= 0)
         {
-            //MazeReset();
             PV.RPC("MazeReset", RpcTarget.All);
         }
     }
 
+    void GetTimer()
+    {
+        time_left -= Time.deltaTime;
+        minutes = Mathf.Floor(time_left / 60);
+        seconds = time_left % 60;
+        if (seconds > 59)
+        {
+            seconds = 59;
+        }
+        if (minutes < 0)
+        {
+            minutes = 0.0f;
+        }
+
+    }
+    #endregion
+
+    #region PunRPC Functions
     [PunRPC] public void MazeReset()
     {
         GameObject[] pokeballs = GameObject.FindGameObjectsWithTag("pokeball");
@@ -59,15 +79,29 @@ public class GameSetup : MonoBehaviour
             pokeball.GetComponent<SphereCollider>().enabled = true;
         }
         pokeballs_count = POKEBALLS;
-
-        //GameObject[] masterballs = GameObject.FindGameObjectsWithTag("masterball");
-        //foreach(GameObject masterball in masterballs)
-        //{
-        //    masterball.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
-        //    masterball.GetComponent<SphereCollider>().enabled = true;
-        //}
     }
 
+    [PunRPC] void GameOver()
+    {
+        time_left = 0.0f;
+        PokemonListBehaviour pokemons_list = GameObject.Find("Pokemon List").GetComponent<PokemonListBehaviour>();
+        ICollection<AvatarPokemonSetup> pokemons = pokemons_list.GetPokemon();
+        int winner_score = 0;
+        AvatarPokemonSetup winner_pokemon = null;
+        foreach (AvatarPokemonSetup p in pokemons)
+        {
+            p.GetComponentInChildren<PokemonMovement>().game_over = true;
+            if (p.scores > winner_score)
+            {
+                winner_score = p.scores;
+                winner_pokemon = p;
+            }
+        }
+        game_over_text.text = "Player " + winner_pokemon.player_name + " win!";
+    }
+    #endregion
+
+    #region MonoBehaviour PunCallbacks
     private void OnEnable()
     {
         if(GameSetup.GS == null)
@@ -91,35 +125,7 @@ public class GameSetup : MonoBehaviour
         SceneManager.LoadScene(MultiplayerSetting.mp_setting.menu_scene);
     }
 
-    [PunRPC] void GameOver()
-    {
-        time_left = 0.0f;
-        PokemonListBehaviour pokemons_list = GameObject.Find("Pokemon List").GetComponent<PokemonListBehaviour>();
-        ICollection<AvatarPokemonSetup> pokemons = pokemons_list.GetPokemon();
-        int winner_score = 0;
-        AvatarPokemonSetup winner_pokemon = null;
-        foreach(AvatarPokemonSetup p in pokemons)
-        {
-            p.GetComponentInChildren<PokemonMovement>().game_over = true;
-            if(p.scores > winner_score)
-            {
-                winner_score = p.scores;
-                winner_pokemon = p;
-            }
-        }
-        game_over_text.text = "Player " + winner_pokemon.player_name + " win!";
-    }
+    #endregion
 
-    void GetTimer() {
-        time_left -= Time.deltaTime;
-        minutes = Mathf.Floor(time_left / 60);
-        seconds = time_left % 60;
-        if(seconds > 59) {
-            seconds = 59;
-        }
-        if(minutes < 0) {
-            minutes = 0.0f;
-        }
-
-    }
+   
 }

@@ -6,17 +6,22 @@ using UnityEngine.UI;
 
 public class PokemonMovement : MonoBehaviour
 {
+    #region Script Variables
     private PhotonView PV;
-    //private CharacterController CC;
     private AvatarPokemonSetup avatar_pokemon_setup;
     private PokemonListBehaviour pokemon_list;
     private float speed = 5;
+    private string pokemon_name;
+    private float evolve_duration;
+
     public List<GameObject> evolve_pokemon;
     public Text scores;
-    public string pokemon_name;
     public bool game_over;
     public bool master_ball_eaten;
-    public float evolve_duration;
+    
+    #endregion
+
+    #region MonoBehaviour Functions
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +45,6 @@ public class PokemonMovement : MonoBehaviour
                 evolve_duration -= Time.deltaTime;
                 if(evolve_duration < 0)
                 {
-                    //Devolve();
                     PV.RPC("Devolve", RpcTarget.All);
                 }
             }
@@ -97,6 +101,62 @@ public class PokemonMovement : MonoBehaviour
         evolve_duration = 7.5f;
     }
     
+   
+    private void OnCollisionEnter(Collision collision)
+    {
+        // COLLISION WITH POKEBALL
+        if (collision.gameObject.tag == "pokeball")
+        {
+            //collision.gameObject.SetActive(false);
+            collision.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+            collision.gameObject.GetComponent<SphereCollider>().enabled = false;
+            avatar_pokemon_setup.scores++;
+            GameSetup.GS.pokeballs_count--;
+        }
+        // COLLISION WITH MASTERBALL
+        if (collision.gameObject.tag == "masterball" && !master_ball_eaten)
+        {
+            collision.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+            collision.gameObject.GetComponent<SphereCollider>().enabled = false;
+            collision.gameObject.GetComponent<MasterBallBehaviour>().spawned = false;
+            Evolve();
+        }
+
+        // COLLISION BETWEEN TWO PLAYER, TWO POSSIBLE SCENARIO
+        if (collision.gameObject.tag == "Player" && !master_ball_eaten)
+        {
+            float force = 300;
+            Vector3 dir = collision.contacts[0].point - transform.position;
+            dir = -dir.normalized;
+            GetComponent<Rigidbody>().AddForce(dir * force);
+        }
+        else if (collision.gameObject.tag == "Player" && master_ball_eaten)
+        {
+            if (!collision.gameObject.GetComponent<PokemonMovement>().master_ball_eaten)
+            {
+                Destroy(collision.gameObject);
+            }
+        }
+
+        // COLLISION WITH GENGAR, TWO POSSIBLE SCENARIO
+        if (collision.gameObject.tag == "Gengar" && !master_ball_eaten)
+        {
+            GetComponent<Transform>().position = avatar_pokemon_setup.start_position.position;
+            avatar_pokemon_setup.scores -= 10;
+        }
+        else if (collision.gameObject.tag == "Gengar" && master_ball_eaten)
+        {
+            collision.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
+        }
+        else
+        {
+            return;
+        }
+    }
+    #endregion
+
+    #region PunRPC Functions
+
     [PunRPC] void Devolve()
     {
         Debug.LogWarning("Inside the Devolve loop");
@@ -107,55 +167,6 @@ public class PokemonMovement : MonoBehaviour
         evolve_duration = 5.0f;
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        // COLLISION WITH POKEBALL
-        if(collision.gameObject.tag == "pokeball")
-        {
-            //collision.gameObject.SetActive(false);
-            collision.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
-            collision.gameObject.GetComponent<SphereCollider>().enabled = false;
-            avatar_pokemon_setup.scores++;
-            GameSetup.GS.pokeballs_count--;
-        }
-        // COLLISION WITH MASTERBALL
-        if(collision.gameObject.tag == "masterball" && !master_ball_eaten)
-        {
-            collision.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
-            collision.gameObject.GetComponent<SphereCollider>().enabled = false;
-            collision.gameObject.GetComponent<MasterBallBehaviour>().spawned = false;
-            Evolve();
-        }
+    #endregion
 
-        // COLLISION BETWEEN TWO PLAYER, TWO POSSIBLE SCENARIO
-        if(collision.gameObject.tag == "Player" && !master_ball_eaten)
-        {
-            float force = 300;
-            Vector3 dir = collision.contacts[0].point - transform.position;
-            dir = -dir.normalized;
-            GetComponent<Rigidbody>().AddForce(dir * force);
-        }
-        else if(collision.gameObject.tag == "Player" && master_ball_eaten)
-        {
-            if(!collision.gameObject.GetComponent<PokemonMovement>().master_ball_eaten)
-            {
-                Destroy(collision.gameObject);
-            }
-        }
-        
-        // COLLISION WITH GENGAR, TWO POSSIBLE SCENARIO
-        if (collision.gameObject.tag == "Gengar" && !master_ball_eaten)
-        {
-            GetComponent<Transform>().position = avatar_pokemon_setup.start_position.position;
-            avatar_pokemon_setup.scores -= 10;
-        }
-        else if(collision.gameObject.tag == "Gengar" && master_ball_eaten)
-        {
-            collision.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
-        }
-        else
-        {
-            return;
-        }
-    }
 }

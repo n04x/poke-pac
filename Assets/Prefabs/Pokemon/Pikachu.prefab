@@ -1688,16 +1688,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RaichuM
       objectReference: {fileID: 0}
-    - target: {fileID: 2149493680378936209, guid: 6441df5e57864f94d99987e5bd284d78,
-        type: 3}
-      propertyPath: m_TagString
-      value: evolve
-      objectReference: {fileID: 0}
-    - target: {fileID: 2149493680378936209, guid: 6441df5e57864f94d99987e5bd284d78,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3742387692583421397, guid: 6441df5e57864f94d99987e5bd284d78,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1752,21 +1742,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3742387692583421397, guid: 6441df5e57864f94d99987e5bd284d78,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3742387692583421397, guid: 6441df5e57864f94d99987e5bd284d78,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3742387692583421397, guid: 6441df5e57864f94d99987e5bd284d78,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6441df5e57864f94d99987e5bd284d78, type: 3}

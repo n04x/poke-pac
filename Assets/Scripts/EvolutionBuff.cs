@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class EvolutionBuff : MonoBehaviour
 {
-    //public List<GameObject> evolution_go;
     public List<GameObject> evolution_go;
     // Start is called before the first frame update
     void Start()
     {
-        //evolution_go.Add(GameObject.FindGameObjectWithTag("default"));
-        //evolution_go.Add(GameObject.FindGameObjectWithTag("evole"));
         GetComponentInParent<PokemonMovement>().evolve_pokemon = evolution_go;
     }
     private void Update()

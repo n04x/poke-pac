@@ -7,15 +7,21 @@ using UnityEngine.AI;
 
 public class GengarMovement : MonoBehaviour
 {
+    #region Script Variables
     private PhotonView PV;
     private NavMeshAgent nav_mesh_agent;
     private MeshCollider mesh_collider;
+    private PokemonListBehaviour pokemon_list;
+
     Vector3 syncPos = Vector3.zero;
     Quaternion syncRot = Quaternion.identity;
-    private PokemonListBehaviour pokemon_list;
+
     public Transform temp_target;
 
+    #endregion
 
+
+    #region MonoBehaviour Functions
     // Start is called before the first frame update
     void Start()
     {
@@ -64,9 +70,14 @@ public class GengarMovement : MonoBehaviour
         return closest_pokemon;
     }
 
+    #endregion
+
+    #region PunRPC Functions
     [PunRPC] void UpdateGengarTransform(Vector3 pos, Quaternion rot)
     {
         syncPos = pos;
         syncRot = rot;
     }
+
+    #endregion
 }

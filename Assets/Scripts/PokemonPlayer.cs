@@ -13,11 +13,8 @@ public class PokemonPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //int spawn_pos_pick = PhotonNetwork.LocalPlayer.GetPlayerNumber();
         PV = GetComponent<PhotonView>();
-        //Debug.LogWarning("SPAWN POSITION PICK BY GET PLAYER NUMBER: " + spawn_pos_pick);
         int spawn_pos_pick = (PV.ViewID / 1000) - 1;
-        //int spawn_pos_pick = Random.Range(0, GameSetup.GS.spawn_positions.Length);
         if (PV.IsMine)
         {
             Debug.LogWarning("The coordinate for our spawn pos: " + GameSetup.GS.spawn_positions[spawn_pos_pick]);

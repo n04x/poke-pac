@@ -138,7 +138,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
     #endregion
 
-    #region PunRPC Methods
+    #region PunRPC Functions
     [PunRPC]
     private void RPC_LoadedGameScene()
     {
