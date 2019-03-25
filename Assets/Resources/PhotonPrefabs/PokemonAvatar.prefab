@@ -1178,6 +1178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 179c4525a2ff9654e989077521a56fce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+  evolve_duration: 0
   evolve_pokemon: []
   scores: {fileID: 0}
   game_over: 0

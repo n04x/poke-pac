@@ -10,9 +10,9 @@ public class PokemonMovement : MonoBehaviour
     private PhotonView PV;
     private AvatarPokemonSetup avatar_pokemon_setup;
     private PokemonListBehaviour pokemon_list;
-    private float speed = 5;
+    public float speed = 5;
     private string pokemon_name;
-    private float evolve_duration;
+    public float evolve_duration;
 
     public List<GameObject> evolve_pokemon;
     public Text scores;
@@ -95,10 +95,10 @@ public class PokemonMovement : MonoBehaviour
     {
         Debug.LogWarning("Inside the Evolve loop");
         master_ball_eaten = true;
-        speed = 7.0f;
+        speed = 7.5f;
         evolve_pokemon[0].SetActive(false);
         evolve_pokemon[1].SetActive(true);
-        evolve_duration = 7.5f;
+        evolve_duration = 5.0f;
     }
     
    
@@ -107,10 +107,8 @@ public class PokemonMovement : MonoBehaviour
         // COLLISION WITH POKEBALL
         if (collision.gameObject.tag == "pokeball")
         {
-            //collision.gameObject.SetActive(false);
             collision.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
             collision.gameObject.GetComponent<SphereCollider>().enabled = false;
-            //collision.gameObject.GetComponent<AudioSource>().Play();
 
             if (PV.IsMine)
             {
@@ -125,11 +123,11 @@ public class PokemonMovement : MonoBehaviour
             collision.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
             collision.gameObject.GetComponent<SphereCollider>().enabled = false;
             collision.gameObject.GetComponent<MasterBallBehaviour>().spawned = false;
-            if(PV.IsMine)
-            {
-                GetComponent<AudioSource>().Play(); // Alert everyone that a player ate a PokePuff
-            }
             Evolve();
+            if (PV.IsMine)
+            {
+                collision.gameObject.GetComponent<AudioSource>().Play();
+            }
         }
 
         // COLLISION BETWEEN TWO PLAYER, TWO POSSIBLE SCENARIO
