@@ -37,5 +37,6 @@ MonoBehaviour:
   - UpdateGengarTransform
   - UpdateSpawnIndexes
   - Devolve
+  - GameEndedForPlayer
   DisableAutoOpenWizard: 1
   ShowSettings: 1

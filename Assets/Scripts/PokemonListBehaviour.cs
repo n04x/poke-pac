@@ -18,4 +18,19 @@ public class PokemonListBehaviour : MonoBehaviour
     {
         return pokemon_avatar_list;
     }
+
+    public void RemovePokemon(AvatarPokemonSetup p)
+    {
+        for(int i = 0; i < pokemon_avatar_list.Count; i++)
+        {
+            if (p.player_name == pokemon_avatar_list[i].player_name && p.start_position == pokemon_avatar_list[i].start_position)
+            {
+                pokemon_avatar_list.RemoveAt(i);
+            }
+        }
+        foreach(AvatarPokemonSetup pl in pokemon_avatar_list)
+        {
+ 
+        }
+    }
 }

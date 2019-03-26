@@ -1184,6 +1184,7 @@ MonoBehaviour:
   scores: {fileID: 0}
   game_over: 0
   master_ball_eaten: 0
+  is_dead: 0
 --- !u!114 &4844935203761400660
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -18,6 +18,7 @@ public class PokemonMovement : MonoBehaviour
     public Text scores;
     public bool game_over;
     public bool master_ball_eaten;
+    public bool is_dead;
     
     #endregion
 
@@ -33,6 +34,7 @@ public class PokemonMovement : MonoBehaviour
         avatar_pokemon_setup.player_name = pokemon_name;
         pokemon_list.AddPokemon(avatar_pokemon_setup);
         master_ball_eaten = false;
+        is_dead = false;
     }
 
     // Update is called once per frame
@@ -40,6 +42,11 @@ public class PokemonMovement : MonoBehaviour
     {
         if(PV.IsMine)
         {
+            if(is_dead)
+            {
+                PV.RPC("GameEndedForPlayer", RpcTarget.All);
+                return;
+            }
             if (master_ball_eaten)
             {
                 evolve_duration -= Time.deltaTime;
@@ -142,7 +149,8 @@ public class PokemonMovement : MonoBehaviour
         {
             if (!collision.gameObject.GetComponent<PokemonMovement>().master_ball_eaten)
             {
-                Destroy(collision.gameObject);
+                collision.gameObject.GetComponent<PokemonMovement>().is_dead = true;
+                //Destroy(collision.gameObject);
             }
         }
 
@@ -171,7 +179,6 @@ public class PokemonMovement : MonoBehaviour
 
     [PunRPC] void Devolve()
     {
-        Debug.LogWarning("Inside the Devolve loop");
         master_ball_eaten = false;
         speed = 5.0f;
         evolve_pokemon[0].SetActive(true);
@@ -179,6 +186,12 @@ public class PokemonMovement : MonoBehaviour
         evolve_duration = 5.0f;
     }
 
+    [PunRPC] void GameEndedForPlayer()
+    {
+        speed = 0.0f;
+        pokemon_list.RemovePokemon(avatar_pokemon_setup);
+        gameObject.SetActive(false);
+    }
     #endregion
 
 }
