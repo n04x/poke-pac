@@ -140,10 +140,11 @@ public class PokemonMovement : MonoBehaviour
         // COLLISION BETWEEN TWO PLAYER, TWO POSSIBLE SCENARIO
         if (collision.gameObject.tag == "Player" && !master_ball_eaten)
         {
-            float force = 300;
+            Vector3 collision_force = collision.impulse / Time.deltaTime;
+            float force = 3;
             Vector3 dir = collision.contacts[0].point - transform.position;
             dir = -dir.normalized;
-            GetComponent<Rigidbody>().AddForce(dir * force);
+            GetComponent<Rigidbody>().AddForce(force * dir, ForceMode.Impulse);
         }
         else if (collision.gameObject.tag == "Player" && master_ball_eaten)
         {
