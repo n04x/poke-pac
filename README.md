@@ -14,7 +14,8 @@ The keyboard control mapping for our Pokemon are arrow key or WASD, `W = up`, `A
 ![offline lobby and character selection](./picture/char-select.png)
 
 ### in-game screenshot
-![in-game screenshot](./picture/in-game.png)
+![in-game screenshot](./picture/in-game.png)    
+
 ## R1) Level Environment    
 the environment is 2.5D style, with 3D assets. The path is one tile thick, the walls are represented by 1x1 cube. There is two warp tunnel at the each end of the map along the z-axis, it will warp the player to the other side. The same applies to our Gengar. The pac-dots on our path is represented as pokeball from Pokemon universe. There is 4 masterballs on our map at each corner, upon catching the masterball, it will turn Gengar into a different shade of color and allows our pokemon to kill them and send them back to prison.    
 
