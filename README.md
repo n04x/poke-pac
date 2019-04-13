@@ -1,7 +1,6 @@
 # Personal Information
 COMP476 Assignment #3: Advanced Game Development, Concordia University    
-Presented by: Thomas Backs    
-ID: 27554524    
+Presented by: noax       
 
 ## Introduction
 Multiplayer game inspired from the classic Pac-Man Battle Royale, but in my version, it will be with Pokemon instead. Each player controls a single pokemon (*Bulbasaur, Charmander, Squirtle, or Pikachu*), the players are trying to catch all PokeBall around the map, there is some Gengar's that are trying to catch these pokemon running around, try to not get caught by it! There is 4 Masterballs around the map as well, upon capturing a masterball, the Gengar will turn white and will try to run away from the players. In order to start playing it, you run it, wait for the Offline button to display Start, enter your name, click on your preferred pokemon character and then click on Start. It will automatically find opponents *(up to four (4))* and start the game after 5 seconds. Big thanks to InfoGamer for its video on how to use Photon Networking *(source below)*    
